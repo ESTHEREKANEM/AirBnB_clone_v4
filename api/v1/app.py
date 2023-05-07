@@ -11,6 +11,8 @@ from flasgger.utils import swag_from
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
+app.debug = True
+CORS(app)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "0.0.0.0"}})
 
 
@@ -45,5 +47,5 @@ if __name__ == "__main__":
     if not host:
         host = '0.0.0.0'
     if not port:
-        port = '5000'
+        port = '5001'
     app.run(host=host, port=port, threaded=True)
